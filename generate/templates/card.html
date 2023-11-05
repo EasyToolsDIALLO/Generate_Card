@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="cards">
+
+    <div class="front">
+      <div id = "htmlContent">
+        <div class="sidebar">
+          <h1 class="sidebar_title">SNESS</h1>
+          <img src="{% static '/images/visa.jpg' %}" alt="person" class="img_size" />
+          <h4 class="sidebar_signature">Signature</h4>
+          <div class="color-side"></div>
+        </div>
+        <div class="information">
+          <img src="{% static '/images/logo.png' %}" alt="logo" class="logo_img" />
+          <h2>Carte de Membre</h2>
+          <div class="infos_membre">
+            <div class="row_info">
+              <h4><strong>Nom:</strong></h4>
+              <p>&nbspDIALLO</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Prénom:</strong></h4>
+              <p>&nbspOusmane</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Né(e) le:</strong></h4>
+              <p>&nbsp05/11/20224</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Secteur:</strong></h4>
+              <p>&nbspDakar</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Section:</strong></h4>
+              <p>&nbspDakar</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Délivrée le:</strong></h4>
+              <p>&nbsp05/11/2024</p>
+            </div>
+            <div class="row_info">
+              <h4><strong>Expire le:</strong></h4>
+              <p>&nbsp05/11/2025</p>
+            </div>
+          </div>
+        </div>
+      
+        
+      </div>
+      <a id="download">Download</a>
+    </div>
+    <div class="back">
+      <div id = "htmlContent1">
+        <div class="htmlContent1_header">
+          <img src="{% static '/images/qrcode.png' %}" alt="qrcode" class="logo_img" />
+          <img src="{% static '/images/logo.png' %}" alt="qrcode" class="logo_img" />
+        </div>
+      
+        <div class="htmlContent1_body">
+          <div class="tresorier">
+            <p class="htmlContent1_body_tresorier">Le Trésorier Général</p>
+          </div>
+          <div class="secretary">
+            <p class="htmlContent1_body_secretaire">Le Sécrétaire Général</p>
+            <p class="htmlContent1_body_signature">Signature</p>
+          </div>
+            
+        </div>
+        
+      </div>
+      <a id="download1">Download</a>
+    </div>
+
+  </div>
+  
+  
+ 
+{% endblock %}
+
+    

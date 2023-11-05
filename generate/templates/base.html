@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Convert HTML To Image</title>
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  </head>
+  
+  <body onload = "autoClick();">
+
+    {% block content %}
+    {% endblock %}
+
+    <script type="text/javascript">
+      function autoClick(){
+        $("#download").click();
+        $("#download1").click();
+      }
+
+      $(document).ready(function(){
+        var element = $("#htmlContent");
+        var element1 = $("#htmlContent1");
+
+        $("#download").on('click', function(){
+
+          html2canvas(element, {
+            onrendered: function(canvas) {
+              var imageData = canvas.toDataURL("image/jpg");
+              var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+              $("#download").attr("download", "image.jpg").attr("href", newData);
+            },
+            allowTaint: true,
+            useCORS:true
+          }
+          
+          );
+
+        });
+
+        $("#download1").on('click', function(){
+
+          html2canvas(element1, {
+            onrendered: function(canvas) {
+              var imageData = canvas.toDataURL("image/jpg");
+              var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+              $("#download1").attr("download", "image.jpg").attr("href", newData);
+            }
+          });
+
+          });
+      });
+    </script>
+  </body>
+</html>
