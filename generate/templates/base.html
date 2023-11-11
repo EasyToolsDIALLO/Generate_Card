@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static '/css/style.css' %}" />
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js">
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -19,6 +19,7 @@
     {% endblock %}
 
     <script type="text/javascript">
+      window.jsPDF = window.jspdf.jsPDF;
       function autoClick(){
         $("#download").click();
         $("#download1").click();
@@ -30,29 +31,33 @@
 
         $("#download").on('click', function(){
 
-          html2canvas(element, {
-            onrendered: function(canvas) {
+          html2canvas(document.getElementById('htmlContent'), 
+            width="200px",
+            height="300px",
+            innerHeight="55vh",
+            innerWidth="65vh",
+            scale= 2,
+          ).then(function(canvas) {
               var imageData = canvas.toDataURL("image/jpg");
               var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
               $("#download").attr("download", "image.jpg").attr("href", newData);
-            },
-            allowTaint: true,
-            useCORS:true
-          }
-          
-          );
 
+
+
+            })
+           
+            
         });
 
         $("#download1").on('click', function(){
 
-          html2canvas(element1, {
-            onrendered: function(canvas) {
+          html2canvas(document.getElementById('htmlContent1')).then(function(canvas) {
               var imageData = canvas.toDataURL("image/jpg");
               var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
               $("#download1").attr("download", "image.jpg").attr("href", newData);
-            }
-          });
+
+              
+            })
 
           });
       });
